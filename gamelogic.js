@@ -1,13 +1,35 @@
 function displayWordSoFar(word, guesses) {
-  // WRITE ME
+let displayed = [];
+  for (let i = 0; i < word.length; i++) {
+    const letter = word[i];
+    const isGuessed = guesses.includes(letter);
+
+    if(isGuessed) {
+      displayed.push(letter);
+    } else {
+      displayed.push("_");
+    }
+  }
+
+  return displayed.join(" ") + " ";
 }
 
 function isGameWon(word, guesses) {
-  // WRITE ME
+
+  for (let i = 0; i < word.length; i++) {
+    if(!guesses.includes(word.charAt(i))) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function isGameLost(word, guesses) {
-  // WRITE ME
+  if(guesses.length >= 7) {
+    return true;
+  }
+
+  return false;
 }
 
 module.exports = {
@@ -15,3 +37,5 @@ module.exports = {
   isGameWon: isGameWon,
   isGameLost: isGameLost,
 };
+
+//console.log(displayWordSoFar('test', ['e', 's', 'h', 'g', 't']), isGameWon("test", ['e', 's', 'h', 'g', 't']));
