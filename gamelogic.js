@@ -21,6 +21,7 @@ function isGameWon(word, guesses) {
       return false;
     }
   }
+
   return true;
 }
 
