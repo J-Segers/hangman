@@ -1,3 +1,5 @@
+
+
 function displayWordSoFar(word, guesses) {
 let displayed = [];
   for (let i = 0; i < word.length; i++) {
@@ -15,7 +17,6 @@ let displayed = [];
 }
 
 function isGameWon(word, guesses) {
-
   for (let i = 0; i < word.length; i++) {
     if(!guesses.includes(word.charAt(i))) {
       return false;
@@ -26,17 +27,24 @@ function isGameWon(word, guesses) {
 }
 
 function isGameLost(word, guesses) {
-  if(guesses.length >= 7) {
-    return true;
+  return countWrongLetters(word, guesses) >= 7;
+}
+
+function countWrongLetters(word, guesses) {
+  let mistakes = 0;
+
+  for (let i = 0; i < guesses.length; i++) {
+    if (!word.includes(guesses[i])) {
+      mistakes++;
+    }
   }
 
-  return false;
+  return mistakes;
 }
 
 module.exports = {
   displayWordSoFar: displayWordSoFar,
   isGameWon: isGameWon,
   isGameLost: isGameLost,
+  countWrongLetters: countWrongLetters
 };
-
-//console.log(displayWordSoFar('test', ['e', 's', 'h', 'g', 't']), isGameWon("test", ['e', 's', 'h', 'g', 't']));
