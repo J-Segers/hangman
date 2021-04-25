@@ -1,5 +1,5 @@
 
-
+// check if each letter of the word is in the guessed array if true push letter to new output else push a '_' to new output
 function displayWordSoFar(word, guesses) {
 let displayed = [];
   for (let i = 0; i < word.length; i++) {
@@ -30,6 +30,7 @@ function isGameLost(word, guesses) {
   return countWrongLetters(word, guesses) >= 7;
 }
 
+// count the mistakes
 function countWrongLetters(word, guesses) {
   let mistakes = 0;
 
